@@ -1,0 +1,7 @@
+# Local Docker API -> host read-only verifier. Requires the separately running verifier.
+services:
+  api:
+    environment:
+      TEAPASS_MIDNIGHT_CONTRACT_ADDRESS: ${TEAPASS_MIDNIGHT_CONTRACT_ADDRESS:?Set the verified local contract address}
+      TEAPASS_MIDNIGHT_NETWORK: undeployed
+      TEAPASS_MIDNIGHT_VERIFIER_URL: http://host.docker.internal:6301

@@ -1,0 +1,61 @@
+.garden-root {
+  min-height: 100vh;
+  color: #1e3a2c;
+  background: #f3ecdf;
+  padding: 48px 20px 64px;
+  font-family: var(--font-source), system-ui, sans-serif;
+}
+.garden-root[data-font="fraunces"] .garden-header h1 { font-family: var(--font-fraunces), Georgia, serif; }
+.garden-root[data-look="estate"] { background: linear-gradient(180deg, #e8f0e8 0%, #f3ecdf 45%, #efe2cc 100%); }
+.garden-root[data-look="harvest"] { background: linear-gradient(180deg, #f0e6d0, #e7efe8); }
+.garden-root[data-look="loft"] { background: linear-gradient(180deg, #e5ebe3, #ddd4c4); }
+.garden-root[data-look="road"] { background: linear-gradient(180deg, #e8dfd0, #d9c4a2); }
+.garden-root[data-look="cup"] { background: linear-gradient(180deg, #f7f2ea, #e7f0e4); }
+.garden-header { max-width: 720px; margin: 0 auto 32px; }
+.garden-kicker { letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px; color: #c4654a; margin: 0 0 8px; }
+.garden-header h1 { font-size: clamp(32px, 5vw, 52px); margin: 0 0 8px; font-weight: 520; }
+.garden-bio { margin: 0; line-height: 1.55; max-width: 40rem; }
+.garden-location { margin: 8px 0 0; opacity: 0.75; font-size: 14px; }
+.garden-bento {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.garden-list { max-width: 640px; margin: 0 auto; display: grid; gap: 10px; }
+.garden-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 16px;
+  border-radius: 16px;
+  background: color-mix(in srgb, #fbf7f0 92%, transparent);
+  border: 1px solid #e0d4c2;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 24px rgba(30, 50, 36, 0.08);
+}
+.garden-size-s { grid-column: span 1; }
+.garden-size-w { grid-column: span 2; }
+.garden-size-t { grid-column: span 1; grid-row: span 2; }
+.garden-size-l { grid-column: span 2; grid-row: span 2; }
+.garden-list .garden-tile { grid-column: auto; grid-row: auto; }
+.garden-heading { margin: 0; font-size: 18px; font-family: var(--font-fraunces), Georgia, serif; }
+.garden-sub { font-size: 12px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08em; }
+.garden-media { height: 96px; margin-top: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.garden-thumb { max-width: 100%; max-height: 100%; object-fit: contain; }
+.garden-badge { text-align: center; margin-top: 40px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; }
+
+/* Bento spans assume 4 columns; collapse cleanly instead of squeezing. */
+@media (max-width: 760px) {
+  .garden-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .garden-size-t { grid-row: span 1; }
+}
+@media (max-width: 480px) {
+  .garden-bento { grid-template-columns: minmax(0, 1fr); }
+  .garden-size-s, .garden-size-w, .garden-size-t, .garden-size-l { grid-column: span 1; grid-row: span 1; }
+  .garden-root { padding: 32px 16px 48px; }
+}

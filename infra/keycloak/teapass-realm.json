@@ -1,0 +1,27 @@
+{
+  "realm": "teapass",
+  "enabled": true,
+  "registrationAllowed": false,
+  "accessTokenLifespan": 300,
+  "clients": [{
+    "clientId": "teapass-web",
+    "enabled": true,
+    "publicClient": true,
+    "standardFlowEnabled": true,
+    "directAccessGrantsEnabled": false,
+    "redirectUris": ["http://localhost:3000/auth/callback"],
+    "webOrigins": ["http://localhost:3000"],
+    "attributes": {"pkce.code.challenge.method": "S256"},
+    "protocolMappers": [{
+      "name": "teapass-api-audience",
+      "protocol": "openid-connect",
+      "protocolMapper": "oidc-audience-mapper",
+      "consentRequired": false,
+      "config": {
+        "included.custom.audience": "teapass-api",
+        "id.token.claim": "false",
+        "access.token.claim": "true"
+      }
+    }]
+  }]
+}

@@ -1,0 +1,38 @@
+{
+  "evidenceClass": "LOCAL_DEVNET",
+  "synthetic": true,
+  "networkId": "undeployed",
+  "recordedAt": "2026-10-19T09:56:27.111Z",
+  "contractAddress": "3aadf793d163d59228e9ebcd18bfb7542f7692be26e8875cbc6081548df1db17",
+  "receipts": [
+    {
+      "label": "deployment",
+      "txId": "00c0a8d76d58297b819bb6dc2a3d4d7042ce366583531a0f5135b76a62e8211ea9",
+      "txHash": "7b4d51afbea5923adf00b9db6e14f541319ad37a6f1a830c4f3cd40c15ba2acc",
+      "blockHash": "588fc4e72f8fe40b40381067b9abde3921ab45fc70836595a8b36c07cb5a7fdb",
+      "blockHeight": 48,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300
+    },
+    {
+      "label": "recordAmount",
+      "txId": "007b24df3ef2d714fb4779fe141775a1ac41654eb6347581363b6f670ab8a9e92b",
+      "txHash": "f50db2061c5df15b661046c0cebca5cfecb093cedf0726e47e09bb7e23e97105",
+      "blockHash": "954089e7b87029b51af8ebe520058fb2471831fd910e5b227a60c4e69d2fdc4a",
+      "blockHeight": 52,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300
+    }
+  ],
+  "checks": [
+    "deployment_indexed",
+    "out_of_range_rejected_before_submission",
+    "private_amount_proven_and_indexed",
+    "replay_rejected_before_submission"
+  ],
+  "complete": true,
+  "limitations": [
+    "Compatibility probe only; no issuer authority or inventory conservation.",
+    "Rejected calls are local compiled-circuit failures before submission."
+  ]
+}

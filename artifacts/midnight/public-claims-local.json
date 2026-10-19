@@ -1,0 +1,38 @@
+{
+  "evidenceClass": "LOCAL_DEVNET",
+  "synthetic": true,
+  "claims": [
+    {
+      "claimId": "dc84b1cd8b2d05be377e49ce0e816d617693d90c05a27aedc93e75b8c5d304d5",
+      "claimType": "LAB_MEASUREMENT_AT_OR_BELOW_POLICY_THRESHOLD",
+      "status": "INVALID",
+      "reasons": [
+        "LAB_REVOKED"
+      ],
+      "batchCommitment": "acb057c8c8454f8288df26abc7bebf3e06b1480d1d32fbfb12f00c8f6ab31b13",
+      "batchReference": "bcbe04ba681581a1834f60e968c129546d4e36c92381027e1afefa8621160118",
+      "materialClass": "3",
+      "labAuthority": "7f7d96bd37b26e27c8cb4d0810306e1ceec2a95880a1e01a924c651e1c26c3ef",
+      "policyId": "53766d0300e494b6ea1d800e671962b43ffec4d42268bd4ef0af784fd501a6e0",
+      "expiresAt": "1792407638",
+      "policy": {
+        "analyte": "3839a79ce312b55453528285de86929e168809eabdcab5a37e98f1cbead9376e",
+        "method": "83365e65967e9fcea6169dff7bd330a288d2ad8feae8eee8877b0bbe73770d7a",
+        "unit": "1",
+        "threshold": "5",
+        "validFrom": "1792319438",
+        "validUntil": "1792492238"
+      },
+      "limitations": [
+        "Digital claim about the committed tested note; physical sample identity is not guaranteed.",
+        "No blanket origin, food-safety or QR anti-counterfeit claim."
+      ],
+      "network": "undeployed",
+      "contractAddress": "774a4f1b8ba8eedfd071618ac823d80d7661cd862ff781a50bb666def9f8d83a",
+      "finalizedBlockHash": "d757e57bd682e4edd4adf7ce35ad7b190afbca2f83ddd88b9682d8e910933725",
+      "stateBlockHash": "c12e2a9104d539987b176ea27e93888f099b40089ec5711a31a4b5530bdf9b71",
+      "checkedAt": "2026-10-19T10:32:34.491Z",
+      "trustBasis": "CONFIGURED_NODE_AND_INDEXER_WITH_PINNED_VERIFIER_KEYS"
+    }
+  ]
+}

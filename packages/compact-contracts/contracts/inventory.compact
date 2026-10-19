@@ -1,0 +1,251 @@
+// TeaPass PPT v1. Quantities are integer grams. Public set lookups reveal note links.
+pragma language_version 0.23;
+import CompactStandardLibrary;
+
+export struct Note {
+  version: Uint<8>;
+  owner: Bytes<32>;
+  issuer: Bytes<32>;
+  batch: Bytes<32>;
+  material: Uint<8>;
+  quantity: Uint<64>;
+  originClass: Bytes<32>;
+  nonce: Bytes<32>;
+}
+struct BoundNote {
+  domain: Bytes<32>;
+  network: Bytes<32>;
+  contractAddress: Bytes<32>;
+  note: Note;
+}
+export struct NoteMetadata { batch: Bytes<32>; material: Uint<8>; }
+export struct IssuerPermission { material: Uint<8>; active: Boolean; }
+export struct Policy {
+  analyte: Bytes<32>;
+  method: Bytes<32>;
+  unit: Uint<8>;
+  threshold: Uint<64>;
+  maxAgeSeconds: Uint<64>;
+  validFrom: Uint<64>;
+  validUntil: Uint<64>;
+}
+export struct LabRecord {
+  batchCommitment: Bytes<32>;
+  lab: Bytes<32>;
+  policy: Bytes<32>;
+  measurement: Uint<64>;
+  sampleTime: Uint<64>;
+  expiresAt: Uint<64>;
+  nonce: Bytes<32>;
+}
+struct BoundLabRecord {
+  domain: Bytes<32>; network: Bytes<32>; contractAddress: Bytes<32>; record: LabRecord;
+}
+export struct Claim {
+  batchCommitment: Bytes<32>; lab: Bytes<32>; policy: Bytes<32>; expiresAt: Uint<64>;
+}
+
+export sealed ledger networkDomain: Bytes<32>;
+export sealed ledger governanceKey: Bytes<32>;
+export ledger issuers: Map<Bytes<32>, IssuerPermission>;
+export ledger approvedLabs: Set<Bytes<32>>;
+export ledger notes: Set<Bytes<32>>;
+export ledger noteMetadata: Map<Bytes<32>, NoteMetadata>;
+export ledger spentNullifiers: Set<Bytes<32>>;
+export ledger issuanceTags: Set<Bytes<32>>;
+export ledger policies: Map<Bytes<32>, Policy>;
+export ledger revokedPolicies: Set<Bytes<32>>;
+export ledger labAnchors: Set<Bytes<32>>;
+export ledger complianceClaims: Map<Bytes<32>, Claim>;
+
+witness actorSecret(): Bytes<32>;
+
+export pure circuit authorityKey(secret: Bytes<32>): Bytes<32> {
+  return persistentHash<Vector<2, Bytes<32>>>([pad(32, "TEAPASS_AUTHORITY_V1"), secret]);
+}
+
+constructor(network: Bytes<32>, administrator: Bytes<32>) {
+  networkDomain = disclose(network);
+  governanceKey = disclose(administrator);
+}
+
+circuit requireGovernance(): [] {
+  assert(authorityKey(actorSecret()) == governanceKey, "Unauthorized governance");
+}
+
+export circuit setIssuer(key: Bytes<32>, material: Uint<8>, active: Boolean): [] {
+  requireGovernance();
+  assert(material >= 1 && material <= 3, "Invalid material class");
+  issuers.insert(disclose(key), disclose(IssuerPermission { material: material, active: active }));
+}
+
+export circuit setLab(key: Bytes<32>, active: Boolean): [] {
+  requireGovernance();
+  if (disclose(active)) { approvedLabs.insert(disclose(key)); }
+  else { approvedLabs.remove(disclose(key)); }
+}
+
+circuit validateNote(note: Note): [] {
+  assert(note.version == 1, "Unsupported note version");
+  assert(note.material >= 1 && note.material <= 3, "Invalid material class");
+  assert(note.quantity > 0 && note.quantity <= 1000000000000, "Quantity outside bounds");
+}
+
+export circuit noteCommitment(note: Note, salt: Bytes<32>): Bytes<32> {
+  return persistentCommit<BoundNote>(BoundNote {
+    domain: pad(32, "TEAPASS_NOTE_V1"), network: networkDomain,
+    contractAddress: kernel.self().bytes, note: note
+  }, salt);
+}
+
+circuit addNote(note: Note, salt: Bytes<32>): [] {
+  validateNote(note);
+  const commitment = noteCommitment(note, salt);
+  assert(!notes.member(commitment), "Duplicate note commitment");
+  notes.insert(commitment);
+  noteMetadata.insert(commitment, disclose(NoteMetadata { batch: note.batch, material: note.material }));
+}
+
+export circuit issue(note: Note, salt: Bytes<32>, issuanceNonce: Bytes<32>): [] {
+  const key = disclose(authorityKey(actorSecret()));
+  assert(issuers.member(key), "Unknown issuer");
+  const permission = issuers.lookup(key);
+  assert(permission.active, "Revoked issuer");
+  assert(note.issuer == key, "Issuer binding mismatch");
+  assert(note.material == permission.material, "Issuer material not allowed");
+  const tag = disclose(persistentHash<Vector<5, Bytes<32>>>([
+    pad(32, "TEAPASS_ISSUANCE_V1"), networkDomain, kernel.self().bytes, key, issuanceNonce
+  ]));
+  assert(!issuanceTags.member(tag), "Issuance replay");
+  addNote(note, salt);
+  issuanceTags.insert(tag);
+}
+
+circuit consume(note: Note, salt: Bytes<32>): [] {
+  validateNote(note);
+  const secret = actorSecret();
+  assert(note.owner == authorityKey(secret), "Wrong note owner");
+  assert(notes.member(noteCommitment(note, salt)), "Unknown note commitment");
+  const nullifier = disclose(persistentHash<Vector<5, Bytes<32>>>([
+    pad(32, "TEAPASS_SPEND_V1"), networkDomain, kernel.self().bytes, noteCommitment(note, salt), secret
+  ]));
+  assert(!spentNullifiers.member(nullifier), "Note already consumed");
+  spentNullifiers.insert(nullifier);
+}
+
+circuit sameProvenance(input: Note, output: Note): [] {
+  assert(output.originClass == input.originClass, "Origin class mismatch");
+  assert(output.issuer == input.issuer, "Issuer lineage mismatch");
+}
+
+export circuit transfer(input: Note, inputSalt: Bytes<32>, output: Note, outputSalt: Bytes<32>): [] {
+  assert(input.quantity == output.quantity, "Transfer quantity mismatch");
+  assert(input.material == output.material, "Transfer material mismatch");
+  assert(input.batch == output.batch, "Transfer batch mismatch");
+  sameProvenance(input, output);
+  consume(input, inputSalt);
+  addNote(output, outputSalt);
+}
+
+export circuit split(input: Note, inputSalt: Bytes<32>, outputs: Vector<2, Note>, salts: Vector<2, Bytes<32>>): [] {
+  assert(input.quantity == outputs[0].quantity + outputs[1].quantity, "Split mass imbalance");
+  for (const i of 0..2) {
+    assert(outputs[i].material == input.material, "Split material mismatch");
+    assert(outputs[i].owner == input.owner, "Split owner mismatch");
+    sameProvenance(input, outputs[i]);
+  }
+  consume(input, inputSalt);
+  addNote(outputs[0], salts[0]);
+  addNote(outputs[1], salts[1]);
+}
+
+export circuit blend(inputs: Vector<2, Note>, inputSalts: Vector<2, Bytes<32>>,
+                     outputs: Vector<3, Note>, outputSalts: Vector<3, Bytes<32>>): [] {
+  assert(inputs[0].material == 2 && inputs[1].material == 2, "Blend requires made tea");
+  assert(inputs[0].originClass == inputs[1].originClass, "Mixed origin classes not supported");
+  assert(inputs[0].owner == inputs[1].owner, "Blend owners differ");
+  assert(inputs[0].quantity + inputs[1].quantity ==
+         outputs[0].quantity + outputs[1].quantity + outputs[2].quantity, "Blend mass imbalance");
+  for (const i of 0..2) {
+    assert(outputs[i].material == inputs[i].material, "Remainder material mismatch");
+    assert(outputs[i].batch == inputs[i].batch, "Remainder batch mismatch");
+    assert(outputs[i].quantity < inputs[i].quantity, "Input contribution must be positive");
+    sameProvenance(inputs[i], outputs[i]);
+  }
+  for (const i of 0..3) {
+    assert(outputs[i].owner == inputs[0].owner, "Blend output owner mismatch");
+    assert(outputs[i].originClass == inputs[0].originClass, "Blend origin mismatch");
+  }
+  assert(outputs[2].material == 3, "Blend output must be blended tea");
+  // The authenticated owner becomes the transformation attestor; inherited origin stays fixed.
+  assert(outputs[2].issuer == inputs[0].owner, "Blend attestor mismatch");
+  consume(inputs[0], inputSalts[0]);
+  consume(inputs[1], inputSalts[1]);
+  for (const i of 0..3) { addNote(outputs[i], outputSalts[i]); }
+}
+
+export circuit process(input: Note, inputSalt: Bytes<32>, output: Note, outputSalt: Bytes<32>,
+                       waste: Uint<64>, loss: Uint<64>): [] {
+  assert(input.material == 1 && output.material == 2, "Invalid processing conversion");
+  assert(waste <= 1000000000000 && loss <= 1000000000000, "Loss outside bounds");
+  assert(input.quantity == output.quantity + waste + loss, "Processing mass imbalance");
+  // Explicit synthetic-demo yield policy: 15-35%. Not a regulatory/physical guarantee.
+  assert(output.quantity * 100 >= input.quantity * 15, "Yield below demo policy");
+  assert(output.quantity * 100 <= input.quantity * 35, "Yield above demo policy");
+  assert(output.owner == input.owner, "Processing owner mismatch");
+  sameProvenance(input, output);
+  consume(input, inputSalt);
+  addNote(output, outputSalt);
+}
+
+export circuit registerPolicy(id: Bytes<32>, policy: Policy): [] {
+  requireGovernance();
+  assert(!policies.member(disclose(id)), "Policy version already exists");
+  assert(policy.validFrom < policy.validUntil && policy.validUntil <= 4102444800, "Invalid policy window");
+  assert(policy.maxAgeSeconds > 0 && policy.maxAgeSeconds <= 31536000, "Invalid sample age bound");
+  policies.insert(disclose(id), disclose(policy));
+}
+
+export circuit revokePolicy(id: Bytes<32>): [] {
+  requireGovernance();
+  assert(policies.member(disclose(id)), "Unknown policy");
+  revokedPolicies.insert(disclose(id));
+}
+
+circuit labCommitment(record: LabRecord, salt: Bytes<32>): Bytes<32> {
+  return persistentCommit<BoundLabRecord>(BoundLabRecord {
+    domain: pad(32, "TEAPASS_LAB_V1"), network: networkDomain,
+    contractAddress: kernel.self().bytes, record: record
+  }, salt);
+}
+
+export circuit anchorLab(record: LabRecord, salt: Bytes<32>): [] {
+  const key = disclose(authorityKey(actorSecret()));
+  assert(approvedLabs.member(key), "Unapproved laboratory");
+  assert(record.lab == key, "Lab binding mismatch");
+  assert(notes.member(disclose(record.batchCommitment)), "Unknown batch commitment");
+  assert(policies.member(disclose(record.policy)), "Unknown policy");
+  assert(record.sampleTime < record.expiresAt && record.expiresAt <= 4102444800, "Invalid sample window");
+  const commitment = labCommitment(record, salt);
+  assert(!labAnchors.member(commitment), "Duplicate lab attestation");
+  labAnchors.insert(commitment);
+}
+
+export circuit proveCompliance(record: LabRecord, salt: Bytes<32>): [] {
+  const commitment = labCommitment(record, salt);
+  assert(labAnchors.member(commitment), "Unauthenticated lab record");
+  assert(approvedLabs.member(disclose(record.lab)), "Revoked laboratory");
+  assert(policies.member(disclose(record.policy)), "Unknown policy");
+  assert(!revokedPolicies.member(disclose(record.policy)), "Revoked policy");
+  const policy = policies.lookup(disclose(record.policy));
+  assert(record.measurement <= policy.threshold, "Measurement exceeds threshold");
+  assert(record.sampleTime >= policy.validFrom && record.expiresAt <= policy.validUntil, "Policy window mismatch");
+  assert(kernel.blockTimeGreaterThan(disclose(record.sampleTime)), "Sample is in the future");
+  assert(kernel.blockTimeLessThan(disclose(record.expiresAt)), "Certificate expired");
+  assert(kernel.blockTimeLessThan(disclose((record.sampleTime + policy.maxAgeSeconds) as Uint<64>)), "Sample too old");
+  complianceClaims.insert(commitment, disclose(Claim {
+    batchCommitment: record.batchCommitment, lab: record.lab,
+    policy: record.policy, expiresAt: (record.sampleTime + policy.maxAgeSeconds < record.expiresAt)
+      ? ((record.sampleTime + policy.maxAgeSeconds) as Uint<64>) : record.expiresAt
+  }));
+}

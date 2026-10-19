@@ -1,0 +1,55 @@
+name: teapass
+services:
+  postgres:
+    image: postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+    environment:
+      POSTGRES_USER: teapass
+      POSTGRES_PASSWORD: local-only
+      POSTGRES_DB: teapass
+    ports: ["127.0.0.1:55432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U teapass -d teapass"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  migrate:
+    build: ./apps/api
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      TEAPASS_DATABASE_URL: postgresql+psycopg://teapass:local-only@postgres:5432/teapass
+    depends_on:
+      postgres: {condition: service_healthy}
+  api:
+    build: ./apps/api
+    environment:
+      TEAPASS_DATABASE_URL: postgresql+psycopg://teapass:local-only@postgres:5432/teapass
+      TEAPASS_OIDC_ISSUER: http://localhost:8080/realms/teapass
+      TEAPASS_OIDC_JWKS_URL: http://identity:8080/realms/teapass/protocol/openid-connect/certs
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  identity:
+    image: quay.io/keycloak/keycloak:26.8.1
+    profiles: ["identity"]
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: local-admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: local-only-change-before-sharing
+      KC_HOSTNAME: http://localhost:8080
+    ports: ["127.0.0.1:8080:8080"]
+    volumes:
+      - identity_data:/opt/keycloak/data
+      - ./infra/keycloak/teapass-realm.json:/opt/keycloak/data/import/teapass-realm.json:ro
+volumes:
+  postgres_data:
+  identity_data:

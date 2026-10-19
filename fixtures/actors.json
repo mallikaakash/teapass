@@ -1,0 +1,47 @@
+[
+  {
+    "id": "GROWER-01",
+    "name": "Fictional grower 1",
+    "role": "grower",
+    "synthetic": true
+  },
+  {
+    "id": "GROWER-02",
+    "name": "Fictional grower 2",
+    "role": "grower",
+    "synthetic": true
+  },
+  {
+    "id": "GROWER-03",
+    "name": "Fictional grower 3",
+    "role": "grower",
+    "synthetic": true
+  },
+  {
+    "id": "GROWER-04",
+    "name": "Fictional grower 4",
+    "role": "grower",
+    "synthetic": true
+  },
+  {
+    "id": "GROWER-05",
+    "name": "Fictional grower 5",
+    "role": "grower",
+    "synthetic": true
+  },
+  {
+    "id": "FACTORY-01",
+    "role": "factory",
+    "synthetic": true
+  },
+  {
+    "id": "LAB-01",
+    "role": "lab",
+    "synthetic": true
+  },
+  {
+    "id": "BLENDER-01",
+    "role": "blender",
+    "synthetic": true
+  }
+]

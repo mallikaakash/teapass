@@ -1,0 +1,13 @@
+.passport {
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #fbf7f0;
+  border: 1px solid #e0d4c2;
+  box-shadow: 0 16px 40px rgba(30, 40, 30, 0.12);
+}
+.eyebrow { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #c4654a; }
+.passport h3 { margin: 6px 0 16px; font-family: var(--font-fraunces), Georgia, serif; }
+.passport ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.passport li { display: grid; gap: 4px; font-size: 14px; }
+.passport span { opacity: 0.65; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }

@@ -1,0 +1,324 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+3 0 obj
+<< /Length 457 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(Midnight Buildathon  /  Wave 2) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(TeaPass) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(A private proof that a tea lot was issued, blended, and tested.) Tj
+0 -32 Td
+(The recipe stays off the ledger.) Tj
+0 -32 Td
+(Local devnet evidence, 19 October 2026.) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 631 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(The record that has to stay private) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(Lots are blended.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(A finished batch is made from other batches.) Tj
+0 -32 Td
+(The factory will not publish suppliers, weights, or the formula.) Tj
+0 -32 Td
+(A buyer still needs to check that the recorded weights obeyed the rule.) Tj
+0 -32 Td
+(The proof checks that digital record.) Tj
+0 -32 Td
+(It does not prove where the physical leaf grew.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 677 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(What the chain is allowed to see) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(Hide the recipe.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(Private: quantities, salts, owner secrets, the lab reading, the blend split.) Tj
+0 -32 Td
+(Public: commitments, nullifiers, issuer and lab authority,) Tj
+0 -32 Td
+(the batch reference, the material class, and whether the claim still holds.) Tj
+0 -32 Td
+(Supply-graph anonymity is not claimed.) Tj
+0 -32 Td
+(Public note metadata does reveal the batch reference and material.) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 703 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(Settled on the local Midnight devnet) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(100 + 80 = 40 + 40 + 100) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(Authorized issuer. Two made-tea notes: 100 kg and 80 kg.) Tj
+0 -32 Td
+(The blend consumes both and creates two 40 kg remainders) Tj
+0 -32 Td
+(and one 100 kg blend. Mass must balance.) Tj
+0 -32 Td
+(Blend transaction 005dc40a settled in block 391.) Tj
+0 -32 Td
+(A second spend fails against indexed state, before submission.) Tj
+0 -32 Td
+(Contract 774a4f1b on the local undeployed network.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Length 643 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(A claim, not a food-safety badge) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(The reading stays hidden.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(An approved lab anchors a salted result to the batch commitment.) Tj
+0 -32 Td
+(The circuit proves that reading is under the stated demo threshold.) Tj
+0 -32 Td
+(Judges see the policy, the lab, and the status. Not the measurement.) Tj
+0 -32 Td
+(The replay then revokes the lab.) Tj
+0 -32 Td
+(The saved public claim becomes INVALID.) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Length 613 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(How a judge reproduces it) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(Compile it yourself.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(scripts/replay-judges.sh) Tj
+0 -32 Td
+(Pins Compact 0.31.1, starts the local node, indexer, and proof server,) Tj
+0 -32 Td
+(and replays issuance, the blend, the lab proof, and revocation.) Tj
+0 -32 Td
+(Receipts: artifacts/midnight/inventory-local.json) Tj
+0 -32 Td
+(Walkthrough: docs/JUDGES.md and docs/PROOF.md.) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Length 600 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(Said plainly) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(What this is not.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(Not Midnight preview, preprod, or mainnet.) Tj
+0 -32 Td
+(Not a browser that submits these transactions yet.) Tj
+0 -32 Td
+(A finalized job does not, by itself, prove that declared lineage) Tj
+0 -32 Td
+(edges match the private witnesses.) Tj
+0 -32 Td
+(Negative cases fail in the circuit, before the node accepts them.) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Length 563 >>
+stream
+0.984 0.969 0.941 rg
+0 0 960 540 re f
+0.118 0.302 0.204 rg
+0 532 960 8 re f
+0.769 0.396 0.290 rg
+0 0 8 540 re f
+BT
+/F2 14 Tf
+0.769 0.396 0.290 rg
+64 470 Td
+(This wave) Tj
+/F1 42 Tf
+0.118 0.302 0.204 rg
+0 -62 Td
+(New Compact rules.) Tj
+/F2 20 Tf
+0.176 0.227 0.188 rg
+0 -40 Td
+(Inventory issuance, transfer, split, blend, and processing.) Tj
+0 -32 Td
+(A batch-bound laboratory threshold proof, with revocation.) Tj
+0 -32 Td
+(An API that reconciles finality and will not fake a verified flag.) Tj
+0 -32 Td
+(Apache-2.0. The judge compiles from this repository.) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 3 0 R >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+13 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 5 0 R >>
+endobj
+14 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+15 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 7 0 R >>
+endobj
+16 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+17 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 9 0 R >>
+endobj
+18 0 obj
+<< /Type /Page /Parent 19 0 R /MediaBox [0 0 960 540] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+19 0 obj
+<< /Type /Pages /Count 8 /Kids [11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R] >>
+endobj
+20 0 obj
+<< /Type /Catalog /Pages 19 0 R >>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000009 00000 n 
+0000000081 00000 n 
+0000000151 00000 n 
+0000000659 00000 n 
+0000001341 00000 n 
+0000002069 00000 n 
+0000002823 00000 n 
+0000003517 00000 n 
+0000004181 00000 n 
+0000004832 00000 n 
+0000005447 00000 n 
+0000005585 00000 n 
+0000005723 00000 n 
+0000005861 00000 n 
+0000005999 00000 n 
+0000006137 00000 n 
+0000006275 00000 n 
+0000006413 00000 n 
+0000006552 00000 n 
+0000006660 00000 n 
+trailer << /Size 21 /Root 20 0 R >>
+startxref
+6711
+%%EOF

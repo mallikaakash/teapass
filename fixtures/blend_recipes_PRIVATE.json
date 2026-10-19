@@ -1,0 +1,86 @@
+[
+  {
+    "contributions_g": [
+      60000,
+      40000
+    ],
+    "id": "BLEND-01",
+    "input_g": [
+      100000,
+      80000
+    ],
+    "inputs": [
+      "MADE-01",
+      "MADE-02"
+    ],
+    "output_g": 100000,
+    "remainders_g": [
+      40000,
+      40000
+    ],
+    "synthetic": true
+  },
+  {
+    "contributions_g": [
+      60000,
+      40000
+    ],
+    "id": "BLEND-02",
+    "input_g": [
+      100000,
+      80000
+    ],
+    "inputs": [
+      "MADE-03",
+      "MADE-04"
+    ],
+    "output_g": 100000,
+    "remainders_g": [
+      40000,
+      40000
+    ],
+    "synthetic": true
+  },
+  {
+    "contributions_g": [
+      60000,
+      40000
+    ],
+    "id": "BLEND-03",
+    "input_g": [
+      100000,
+      80000
+    ],
+    "inputs": [
+      "MADE-05",
+      "MADE-06"
+    ],
+    "output_g": 100000,
+    "remainders_g": [
+      40000,
+      40000
+    ],
+    "synthetic": true
+  },
+  {
+    "contributions_g": [
+      60000,
+      40000
+    ],
+    "id": "BLEND-04",
+    "input_g": [
+      100000,
+      80000
+    ],
+    "inputs": [
+      "MADE-07",
+      "MADE-08"
+    ],
+    "output_g": 100000,
+    "remainders_g": [
+      40000,
+      40000
+    ],
+    "synthetic": true
+  }
+]

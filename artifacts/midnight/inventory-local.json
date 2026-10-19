@@ -1,0 +1,129 @@
+{
+  "evidenceClass": "LOCAL_DEVNET",
+  "synthetic": true,
+  "networkId": "undeployed",
+  "recordedAt": "2026-10-19T10:32:08.509Z",
+  "contractAddress": "774a4f1b8ba8eedfd071618ac823d80d7661cd862ff781a50bb666def9f8d83a",
+  "sourceSha256": "73407e06f1782da759a5642b459a8ecdf50da9f51204114ea159b422d1ed85db",
+  "checks": [
+    "deployment_indexed",
+    "authorized_issuance_indexed",
+    "conserved_blend_indexed",
+    "double_spend_rejected_before_submission",
+    "authenticated_compliance_indexed",
+    "lab_revocation_indexed"
+  ],
+  "receipts": [
+    {
+      "label": "deployment",
+      "txId": "007550ed82e81fef1f5b58bf4bfdcb70ae60e282134efc89bce3af79ba524c5512",
+      "txHash": "6915cd09a31d1da3abced51acadbc64a0e663bd84ff3e9da6f6b85e9cdc8e18e",
+      "blockHash": "9c2b54684cd40c0b512b61ee3e96a0f2cbe0cc84d30e221a8c09780262fcba99",
+      "blockHeight": 370,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 22685.054416
+    },
+    {
+      "label": "setIssuer",
+      "txId": "00e82f99b935b57369c24ba4f218072f21879a18c661b53cf3113fb85667508ac0",
+      "txHash": "fc4606b99377eef43364352f02ec9805b5355235e0e8e25c382eb9ce83ca8476",
+      "blockHash": "de213aa7fdc30869ae116717d8166c51b1c3d1b72469ebfd67591857b8367aab",
+      "blockHeight": 374,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 23719.905583000003
+    },
+    {
+      "label": "issue",
+      "txId": "004117396bea02d5d42ab7b02115a2fa1699dbc0316981278e24aa5a4c49f8575d",
+      "txHash": "7a836b65119aea64435ffcb47e13574e861d52e47f3abdfc427f8dc5631d1ceb",
+      "blockHash": "5896110d37b72797dfd411e7cd73974cc8fb6992b52d2ded0cb898cca9afd47f",
+      "blockHeight": 378,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 22700.49104200001
+    },
+    {
+      "label": "issue",
+      "txId": "0061a3b5d027c7512218a0cedce94c9df66fe5b79f4e892e4eceb1238dc57e7f56",
+      "txHash": "ab5206f9d57ea8a651bc639e57cd4d2fa3b3ea75c9a51b23ecc0ff6b0ac0b6e9",
+      "blockHash": "d74b42c010cd54d6ab41e50f7a9b93dde66555dd7e6eee9da5c1016a65c8e747",
+      "blockHeight": 381,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 18711.384833000004
+    },
+    {
+      "label": "blend",
+      "txId": "005dc40a4d1e0d3d6e82b3e5a31ec28c0565d289fa7bede2461d2b72aff97a1130",
+      "txHash": "242d65702394944ae8b68d7462b7922f9894177e81ce42c7f24af3cf8905c984",
+      "blockHash": "e248e94a65588733c619f54dc7eea8bd345f5ab9aaf4feae85b2f871a95bd3ef",
+      "blockHeight": 391,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 60363.04995799999
+    },
+    {
+      "label": "setLab",
+      "txId": "0045b2ada65886c990e48c1f5b306efbbc3ad1777ba959cf9b466e2db2e7f3e2e1",
+      "txHash": "e009e9670d60eb13e47a36b00020b75b3473de85e8b6aa656e64afda7d1dd288",
+      "blockHash": "6c04afbb2b9c8459f7ee17b4e70dc66a787c90096a80ed15b17db8a00653dc81",
+      "blockHeight": 394,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 17166.251832999988
+    },
+    {
+      "label": "registerPolicy",
+      "txId": "0055d5186bf651a6f93f1844773c6e3099522a3a7494aa8e446d9138411ce55eaa",
+      "txHash": "7b7825e623aec29d3561272d3ed9f795922d51962a9fecefe10df62aef6a97ff",
+      "blockHash": "b356c4d336c3fffaf5f2b1f8d868a1382e0cbdcfdd87ada06e0fd49695a7e1ce",
+      "blockHeight": 397,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 18879.503457999992
+    },
+    {
+      "label": "anchorLab",
+      "txId": "001943f1378b84709b43fe57dd2dda2ee6591d11e0d00dc3f300421ae4606827ee",
+      "txHash": "628610b0f874eceaa07a8d2d5386e4964da2eee32d2bb350c1e2be9a1a030ead",
+      "blockHash": "63e4c57d74225be75da82d7ca457c3afb31c3c47b5f8f88c36c0bae48950aa95",
+      "blockHeight": 401,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 23160.088875000016
+    },
+    {
+      "label": "proveCompliance",
+      "txId": "00a403d801e48279eb8ecc85693ba3e372bc459dd4554ca1a532f0b6eb8f00cfcb",
+      "txHash": "62c0e6c86c6c85f4d9e35869767aff24988d35737e17693ce8cf725e3672dccf",
+      "blockHash": "9598983a01a4fa914ae038e47499cfc8ff8f1431470c1394073222f5a8574fb7",
+      "blockHeight": 405,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 24255.885542000004
+    },
+    {
+      "label": "setLab",
+      "txId": "00fa3e430338a78ead4af22b73302f8855be82da961b0e0c99de3df2d049478dcd",
+      "txHash": "d4d6208a1c6ff46021134d1274c63a976503b1b120d776f7a83deb0b73483ee8",
+      "blockHash": "c12e2a9104d539987b176ea27e93888f099b40089ec5711a31a4b5530bdf9b71",
+      "blockHeight": 409,
+      "status": "SucceedEntirely",
+      "protocolVersion": 1000300,
+      "elapsedMs": 23630.34045800002
+    }
+  ],
+  "complete": true,
+  "publicBinding": {
+    "deploymentId": "teapass-local",
+    "batchId": "d4068f7e-6e42-4282-a205-95c9c24dfe86",
+    "batchReference": "bcbe04ba681581a1834f60e968c129546d4e36c92381027e1afefa8621160118"
+  },
+  "limitations": [
+    "Synthetic local network; no public deployment or real institutions.",
+    "Negative calls rejected before submission; timings combine proof and settlement.",
+    "Public commitment lookups reveal links; private amounts and secrets omitted."
+  ]
+}

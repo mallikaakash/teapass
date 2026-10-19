@@ -1,0 +1,10 @@
+{"id": "PROCESS-01", "input": "LEAF-01", "input_g": 400000, "loss_g": 260000, "output": "MADE-01", "output_g": 100000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 40000}
+{"id": "PROCESS-02", "input": "LEAF-02", "input_g": 320000, "loss_g": 208000, "output": "MADE-02", "output_g": 80000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 32000}
+{"id": "PROCESS-03", "input": "LEAF-03", "input_g": 400000, "loss_g": 260000, "output": "MADE-03", "output_g": 100000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 40000}
+{"id": "PROCESS-04", "input": "LEAF-04", "input_g": 320000, "loss_g": 208000, "output": "MADE-04", "output_g": 80000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 32000}
+{"id": "PROCESS-05", "input": "LEAF-05", "input_g": 400000, "loss_g": 260000, "output": "MADE-05", "output_g": 100000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 40000}
+{"id": "PROCESS-06", "input": "LEAF-06", "input_g": 320000, "loss_g": 208000, "output": "MADE-06", "output_g": 80000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 32000}
+{"id": "PROCESS-07", "input": "LEAF-07", "input_g": 400000, "loss_g": 260000, "output": "MADE-07", "output_g": 100000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 40000}
+{"id": "PROCESS-08", "input": "LEAF-08", "input_g": 320000, "loss_g": 208000, "output": "MADE-08", "output_g": 80000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 32000}
+{"id": "PROCESS-09", "input": "LEAF-09", "input_g": 400000, "loss_g": 260000, "output": "MADE-09", "output_g": 100000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 40000}
+{"id": "PROCESS-10", "input": "LEAF-10", "input_g": 320000, "loss_g": 208000, "output": "MADE-10", "output_g": 80000, "policy": "SYNTHETIC_YIELD_15_35_PERCENT", "synthetic": true, "waste_g": 32000}

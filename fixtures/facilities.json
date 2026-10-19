@@ -1,0 +1,12 @@
+[
+  {
+    "id": "FACILITY-1",
+    "synthetic": true,
+    "type": "FICTIONAL_PROCESSING"
+  },
+  {
+    "id": "FACILITY-2",
+    "synthetic": true,
+    "type": "FICTIONAL_PROCESSING"
+  }
+]

@@ -1,0 +1,32 @@
+name: Compact contracts and client
+on:
+  push:
+    paths: ['packages/**', 'scripts/*compact*', '.github/workflows/contracts.yml']
+  pull_request:
+    paths: ['packages/**', 'scripts/*compact*', '.github/workflows/contracts.yml']
+permissions:
+  contents: read
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: packages/compact-contracts/package-lock.json
+      - run: scripts/install-compact.sh
+      - run: npm ci --ignore-scripts
+        working-directory: packages/compact-contracts
+      - run: npm run compile:all
+        working-directory: packages/compact-contracts
+      - run: npm run typecheck && npm test
+        working-directory: packages/compact-contracts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install uv==0.9.4
+      - run: uv sync --frozen --project apps/api
+      - run: npm test
+        working-directory: packages/client-sdk

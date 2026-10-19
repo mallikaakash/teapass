@@ -1,0 +1,30 @@
+[
+  {
+    "alias": "BLEND-01",
+    "material": "BLENDED_TEA",
+    "note": "Fixture only; no proof created by this generator.",
+    "synthetic": true,
+    "verification_status": "NOT_VERIFIED"
+  },
+  {
+    "alias": "BLEND-02",
+    "material": "BLENDED_TEA",
+    "note": "Fixture only; no proof created by this generator.",
+    "synthetic": true,
+    "verification_status": "NOT_VERIFIED"
+  },
+  {
+    "alias": "BLEND-03",
+    "material": "BLENDED_TEA",
+    "note": "Fixture only; no proof created by this generator.",
+    "synthetic": true,
+    "verification_status": "NOT_VERIFIED"
+  },
+  {
+    "alias": "BLEND-04",
+    "material": "BLENDED_TEA",
+    "note": "Fixture only; no proof created by this generator.",
+    "synthetic": true,
+    "verification_status": "NOT_VERIFIED"
+  }
+]

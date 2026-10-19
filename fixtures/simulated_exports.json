@@ -1,0 +1,12 @@
+[
+  {
+    "batch": "BLEND-01",
+    "id": "EXPORT-1",
+    "synthetic": true
+  },
+  {
+    "batch": "BLEND-02",
+    "id": "EXPORT-2",
+    "synthetic": true
+  }
+]
